@@ -31,7 +31,19 @@ describe Bro do
     end
 	end
 
-	# uncomment this test to try it out
+	describe Bro::Write do
+		let(:host) { Class.new { include Bro::Write }}
+
+		it 'converts a string into an array of dates' do
+			dates =  host.new.string_to_dates('a')
+
+			expect( dates.length ).must_equal 18
+    	expect( dates.first.class ).must_equal Date
+		end
+
+	end
+
+	# uncomment these tests to try it out
 	# it 'draws' do
 	# 	bro = Bro.warmup({ repo: 'git@github.com:davekinkead/garbage.git' })
 	# 	bro.draw('

@@ -1,7 +1,8 @@
-require 'date'
+require_relative 'utils'
 
 module Bro
 	module Draw
+		include Bro::Utils
 
 		# Converts ascii art into an array of dates
 		def art_to_dates(art_string)
@@ -26,14 +27,6 @@ module Bro
 			end
 
 			dates.flatten.compact.sort
-		end
-
-		def find_last_sunday(date)
-			date.sunday? ? date : find_last_sunday(date - 1)
-		end
-
-		def remove_tabs_and_empty_line_break(str)
-			str.sub(/$\n/, '').gsub(/\t/, '')
 		end
 	end
 end
