@@ -17,7 +17,7 @@ module Bro
 		end
 
 		def write(str)
-			flex_on_github_with chars_to_dates(str)
+			flex_on_github_with string_to_dates(str)
 		end
 	end
 end

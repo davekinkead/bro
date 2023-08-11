@@ -6,7 +6,11 @@ Turn your contrib graph into ASCII art
 
 ```ruby
 
-bro = Bro.warmup({ repo: `my-github-repo.git` })
+bro = Bro.warmup({ repo: "my-github-repo.git" })
+bro.write("flex bro")
+
+# or
+
 bro.draw "
 	                             2                       2
 	                  2        22222                   222

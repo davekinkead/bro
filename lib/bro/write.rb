@@ -9,19 +9,19 @@ module Bro
 
 			# determine when to begin on the timeline
 			last_sunday = find_last_sunday(Date.today)
-			starting_sunday = last_sunday - (CHAR_WIDTH * 7)
+			starting_sunday = last_sunday - (CHAR_WIDTH * str.size * 7)
 
 			# generate dates for each pixel of each char in the string
-			dates = str.split('').map do |char|
+			dates = str.split('').map.with_index do |char, char_index|
 				char = remove_tabs_and_empty_line_break FONT[char.downcase.to_sym]
 				char.each_line.map.with_index do |line, line_index|
 					line.split('').map.with_index do |pixel, pixel_index|
-						starting_sunday + (pixel_index * 7 + line_index) unless pixel.strip.empty?
+						starting_sunday + (pixel_index * 7 + line_index) + char_index * 7 unless pixel.strip.empty?
 					end
 				end
 			end
 
-			[]
+			dates.flatten.compact.sort
 		end
 
 		CHAR_WIDTH = 6
