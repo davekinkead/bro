@@ -16,7 +16,7 @@ module Bro
 				char = remove_tabs_and_empty_line_break FONT[char.downcase.to_sym]
 				char.each_line.map.with_index do |line, line_index|
 					line.split('').map.with_index do |pixel, pixel_index|
-						starting_sunday + (pixel_index * 7 + line_index) + char_index * 7 unless pixel.strip.empty?
+						starting_sunday + (pixel_index * 7 + line_index) + (char_index * CHAR_WIDTH * 7) unless pixel.strip.empty?
 					end
 				end
 			end

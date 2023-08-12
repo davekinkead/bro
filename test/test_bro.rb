@@ -44,7 +44,8 @@ describe Bro do
 		it 'sets the first date to 6 weeks per character' do
 			dates =  host.new.string_to_dates('abcedf')
 
-    	expect( dates.first ).must_be :<, Date.today - (5*7)
+    	expect( dates.first ).must_be :<, Date.today - (5*7*6)
+    	expect( dates.last ).must_be :>, Date.today - (1*7*6)
 		end
 	end
 
